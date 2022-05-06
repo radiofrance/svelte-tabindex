@@ -1,0 +1,31 @@
+<script>
+  import NoTab from '../components/NoTab.svelte';
+  import Link from '../components/Link.svelte'
+
+  const items = Array(3).fill(0).map((_, i) => i+1);
+  let focusableToggle = true;
+</script>
+
+<h1>focusable</h1>
+{#each items as item}
+  <li>
+    <Link href="/">Link {item}</Link>
+  </li>
+{/each}
+
+<button on:click={() => focusableToggle = !focusableToggle}>Toggle</button>
+<h1>NoTab active : {focusableToggle}</h1>
+<NoTab active={focusableToggle}>
+{#each items as item}
+  <li>
+    <Link href="/">Link {item}</Link>
+  </li>
+{/each}
+</NoTab>
+
+<h1>focusable again</h1>
+{#each items as item}
+  <li>
+    <Link href="/">Link {item}</Link>
+  </li>
+{/each}
