@@ -1,9 +1,9 @@
 <script>
   import { getContext } from 'svelte'
-  import { key } from '../contexts/notab'
+  import { key } from '../lib/context'
 
   export let href = ''
-  let linkAttributes = getContext(key)
+  let tabindexAttr = getContext(key)
 </script>
 
-<a {href} {...$linkAttributes}><slot/></a>
+<a {href} {...$tabindexAttr}><slot/></a>

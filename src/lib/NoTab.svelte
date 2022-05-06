@@ -1,7 +1,7 @@
 <script>
-  import { onDestroy, setContext } from 'svelte'
+  import { setContext } from 'svelte'
   import {writable} from 'svelte/store';
-  import { key } from '../contexts/notab'
+  import { key } from '../lib/context'
 
   export let active = true
   let state = writable(getAttributes(active))

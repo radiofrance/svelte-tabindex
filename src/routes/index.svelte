@@ -1,5 +1,5 @@
 <script>
-  import NoTab from '../components/NoTab.svelte';
+  import NoTab from '../lib/NoTab.svelte';
   import Link from '../components/Link.svelte'
 
   const items = Array(3).fill(0).map((_, i) => i+1);
@@ -13,8 +13,7 @@
   </li>
 {/each}
 
-<button on:click={() => focusableToggle = !focusableToggle}>Toggle</button>
-<h1>NoTab active : {focusableToggle}</h1>
+<h1><input type="checkbox" bind:checked={focusableToggle}/>NoTab active : {focusableToggle}</h1>
 <NoTab active={focusableToggle}>
 {#each items as item}
   <li>
@@ -29,3 +28,10 @@
     <Link href="/">Link {item}</Link>
   </li>
 {/each}
+
+<style>
+  input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+  }
+</style>

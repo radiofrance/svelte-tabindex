@@ -1,38 +1,47 @@
-# create-svelte
+# svelte-tabindex
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+A Svelte component for managing tabindex.
 
-## Creating a project
+## Installation
 
-If you're seeing this, you've probably already done this step. Congrats!
+`npm install svelte-tabindex`
 
-```bash
-# create a new project in the current directory
-npm init svelte
+## How does it works ?
+`<NoTab>...</NoTab>` creates a reactive svelte context (using `writable`) so that its children can update their tabindex.
 
-# create a new project in my-app
-npm init svelte my-app
+Every fousable element of your app (links, buttons, inputs ...) must get the context to implement this behaviour.
+
+The context value is an object (`{ tabindex : Number }`) you can spread as node attribute to do so.
+## Usage
+
+__Link.svelte__ _(a simple link wrapper that gets the svelte-tabindex context)_
+```html
+<script>
+  import { getContext } from 'svelte'
+  import { key } from 'svelte-tabindex/context.js'
+
+  export let href = ''
+  let tabindexAttr = getContext(key)
+</script>
+
+<a {href} {...$tabindexAttr}><slot/></a>
 ```
 
-## Developing
+__App.svelte__
+```html
+<script>
+    import Link from './Link.svelte'
+    import NoTab from 'svelte-tabindex/NoTab.svelte'
+</script>
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+<Link href='/'>focusable link</Link>
+<NoTab>
+    <Link href='/'>non focusable link</Link>
+    <Link href='/'>another non focusable link</Link>
+</NoTab>
+<Link href='/'>another focusable link</Link>
 ```
 
-## Building
+## Advanced usage
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+The `<NoTab>` component has an `active` (Boolean) attribute witch can be used to disable its behaviour.
