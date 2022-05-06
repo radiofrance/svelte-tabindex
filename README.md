@@ -7,27 +7,31 @@ A Svelte component for managing tabindex.
 `npm install svelte-tabindex`
 
 ## How does it works ?
+
 `<NoTab>...</NoTab>` creates a reactive svelte context (using `writable`) so that its children can update their tabindex.
 
 Every fousable element of your app (links, buttons, inputs ...) must get the context to implement this behaviour.
 
 The context value is an object (`{ tabindex : Number }`) you can spread as node attribute to do so.
+
 ## Usage
 
-__Link.svelte__ _(a simple link wrapper that gets the svelte-tabindex context)_
+**Link.svelte** _(a simple link wrapper that gets the svelte-tabindex context)_
+
 ```html
 <script>
-  import { getContext } from 'svelte'
-  import { key } from 'svelte-tabindex/context.js'
+  import { getContext } from 'svelte';
+  import { key } from 'svelte-tabindex/context.js';
 
-  export let href = ''
-  let tabindexAttr = getContext(key)
+  export let href = '';
+  let tabindexAttr = getContext(key);
 </script>
 
-<a {href} {...$tabindexAttr}><slot/></a>
+<a {href} {...$tabindexAttr}><slot /></a>
 ```
 
-__App.svelte__
+**App.svelte**
+
 ```html
 <script>
     import Link from './Link.svelte'
