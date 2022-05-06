@@ -1,9 +1,9 @@
 <script>
   import { getContext } from 'svelte';
-  import { key } from '../lib/context';
+  import { contextKey } from '../lib/index';
 
   export let href = '';
-  let tabindexAttr = getContext(key);
+  let tabindexAttr = getContext(contextKey);
 </script>
 
 <a {href} {...$tabindexAttr}><slot /></a>

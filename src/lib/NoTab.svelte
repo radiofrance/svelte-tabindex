@@ -1,11 +1,11 @@
 <script>
   import { setContext } from 'svelte';
   import { writable } from 'svelte/store';
-  import { key } from '../lib/context';
+  import { contextKey } from './index';
 
   export let active = true;
   let state = writable(getAttributes(active));
-  setContext(key, state);
+  setContext(contextKey, state);
 
   $: $state = getAttributes(active);
 

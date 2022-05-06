@@ -1,6 +1,6 @@
 {
   "name": "svelte-tabindex",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": ["svelte", "tabindex", "accessibility", "keyboard-navigation", "tabulation"],
   "repository": "radiofrance/svelte-tabindex",
   "scripts": {
