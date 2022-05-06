@@ -1,12 +1,11 @@
 {
   "name": "svelte-tabindex",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "keywords": ["svelte", "tabindex", "accessibility", "keyboard-navigation", "tabulation"],
+  "repository": "radiofrance/svelte-tabindex",
   "scripts": {
     "dev": "svelte-kit dev",
-    "build": "svelte-kit build",
     "package": "svelte-kit package",
-    "preview": "svelte-kit preview",
-    "prepare": "svelte-kit sync",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",

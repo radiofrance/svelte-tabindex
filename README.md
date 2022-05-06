@@ -21,10 +21,10 @@ The context value is an object (`{ tabindex : Number }`) you can spread as node 
 ```html
 <script>
   import { getContext } from 'svelte';
-  import { key } from 'svelte-tabindex/context.js';
+  import { contextKey } from 'svelte-tabindex';
 
   export let href = '';
-  let tabindexAttr = getContext(key);
+  let tabindexAttr = getContext(contextKey);
 </script>
 
 <a {href} {...$tabindexAttr}><slot /></a>
@@ -35,7 +35,7 @@ The context value is an object (`{ tabindex : Number }`) you can spread as node 
 ```html
 <script>
     import Link from './Link.svelte'
-    import NoTab from 'svelte-tabindex/NoTab.svelte'
+    import { NoTab } from 'svelte-tabindex'
 </script>
 
 <Link href='/'>focusable link</Link>
