@@ -48,4 +48,16 @@ The context value is an object (`{ tabindex : Number }`) you can spread as node 
 
 ## Advanced usage
 
-The `<NoTab>` component has an `active` (Boolean) attribute witch can be used to disable its behaviour.
+_(e.g. `src/routes/index.svelte`)_
+
+### `active` attribute
+
+The `<NoTab>` component has an `active` (Boolean) attribute witch can be used to dynamically toggle its behaviour.
+
+### Nested NoTab contexts
+
+Your app may need to have nested untabble regions _(e.g. collapsible menu)_. In that case any active `<NoTab/>` ancestor will override the active state of any NoTab descendants. You can bypass this feature by using the `reset` attribute
+
+### `reset` attribute
+
+The `<NoTab>` component has a `reset` attribute that allows you to ignore the state of any active ancestors. It can be used for modals, as the whole app would be wrapped in an active `<NoTab>` component, a modal component wrapped in its own `<NoTab reset>` would not inherit its active state from its ancestors.
